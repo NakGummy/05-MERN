@@ -71,10 +71,12 @@ const loginUser = asyncHandler(async (req, res) => {
         email: existingUser.email,
         isAdmin: existingUser.isAdmin,
       });
-
-      return;
     }
+  } else {
+    res.status(404);
+    throw new Error("User not found.");
   }
+  res.end();
 });
 
 // LOGOUT USER
@@ -138,6 +140,7 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
   }
 });
 
+// DELETE SPECIFIED USER
 const deleteUserById = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
 
@@ -157,6 +160,7 @@ const deleteUserById = asyncHandler(async (req, res) => {
   }
 });
 
+//GET SPECIFIED USER
 const getUserById = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id).select("-password");
 
