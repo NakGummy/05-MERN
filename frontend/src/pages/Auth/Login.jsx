@@ -27,13 +27,25 @@ const Login = () => {
     }
   }, [navigate, redirect, userInfo]);
 
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await login({ email, password }).unwrap();
+      console.log(res);
+      dispatch(setCredencials({ ...res }));
+    } catch (e) {
+      toast.error(e?.data?.message || e.message);
+    }
+  };
+
   return (
     <div>
       <section className="pl-[10rem] flex flex-wrap">
         <div className="mr-[4rem] mt-[5rem]">
           <h1 className="text-2xl font-semibold mb-4">Sign In</h1>
 
-          <form className="container w-[40rem]">
+          <form onSubmit={submitHandler} className="container w-[40rem]">
             {/* Email */}
             <div className="my-[2rem]">
               <label
