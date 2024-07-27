@@ -1,3 +1,6 @@
+// Used In index.js
+//// if you connected to /api/users/this will be used ////
+
 import express from "express";
 import {
   createUser,
@@ -8,6 +11,7 @@ import {
   updateCurrentUserProfile,
   deleteUserById,
   getUserById,
+  updateUserById,
 } from "../controllers/userController.js";
 import { authenticate, authorizeAdmin } from "../middlewares/authMiddleware.js";
 const router = express.Router();
@@ -28,6 +32,7 @@ router
 router
   .route("/:id")
   .delete(authenticate, authorizeAdmin, deleteUserById)
-  .get(authenticate, authorizeAdmin, getUserById);
+  .get(authenticate, authorizeAdmin, getUserById)
+  .put(authenticate, authorizeAdmin, updateUserById);
 
 export default router;

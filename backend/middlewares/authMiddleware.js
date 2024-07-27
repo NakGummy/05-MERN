@@ -2,6 +2,8 @@ import jwt from "jsonwebtoken";
 import User from "../models/userModel.js";
 import asyncHandler from "./asyncHandler.js";
 
+// 1st level authentication
+// Check your token is valid from cookies
 const authenticate = asyncHandler(async (req, res, next) => {
   let token;
 
@@ -22,6 +24,8 @@ const authenticate = asyncHandler(async (req, res, next) => {
   }
 });
 
+// 2nd level authentication
+// Check your token is valid from cookies
 const authorizeAdmin = (req, res, next) => {
   if (req.user && req.user.isAdmin) {
     next();
