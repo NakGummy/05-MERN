@@ -7,7 +7,7 @@
     "backend": "nodemon backend/index.js",
     "frontend": "npm run dev --prefix frontend",
     "dev": "concurrently \"npm run frontend\" \"npm run backend\"",
-    "quick-dev": "npm install && concurrently \"npm run frontend\" \"npm run backend\""
+    "quick-dev": "npm install && cd ./frontend && npm install && cd ../ && concurrently \"npm run frontend\" \"npm run backend\""
   },
   "keywords": [],
   "author": "",
