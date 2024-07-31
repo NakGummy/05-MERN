@@ -99,18 +99,6 @@ const Profile = () => {
               />
             </div>
 
-            {/* Additional Information */}
-            <div className="mb-4">
-              <label className="block text-white mb-2">Name</label>
-              <input
-                type="text"
-                placeholder="Enter new name"
-                className="form-input p-4 rounded-sm w-full"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-            </div>
-
             {/* Buttons */}
             <div className="flex justify-between">
               <button

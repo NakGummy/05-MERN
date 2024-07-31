@@ -7,6 +7,8 @@ import {
   AiOutlineShoppingCart,
   AiOutlineUser,
 } from "react-icons/ai";
+import { PiToolbox } from "react-icons/pi";
+import { TbBackhoe } from "react-icons/tb";
 import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -72,8 +74,8 @@ const Navigation = () => {
           to="/shop"
           className="flex items-center transition-transform transform hover:translate-x-2"
         >
-          <AiOutlineShopping className="mr-2 mt-[3rem]" size={26} />
-          <span className="hidden nav-item-name mt-[3rem]">SHOPPING </span>
+          <TbBackhoe className="mr-2 mt-[3rem]" size={26} />
+          <span className="hidden nav-item-name mt-[3rem]">Tools</span>
           {""}
         </Link>
 
@@ -82,8 +84,8 @@ const Navigation = () => {
           to="/cart"
           className="flex items-center transition-transform transform hover:translate-x-2"
         >
-          <AiOutlineShoppingCart className="mr-2 mt-[3rem]" size={26} />
-          <span className="hidden nav-item-name mt-[3rem]">CART</span>
+          <PiToolbox className="mr-2 mt-[3rem]" size={26} />
+          <span className="hidden nav-item-name mt-[3rem]">Queue</span>
           {""}
         </Link>
 
