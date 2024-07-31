@@ -83,6 +83,10 @@ delete() : 指定 ID のユーザードキュメント削除
 ## コマンド
 
 ```
+npm run quick-dev
+```
+
+```
 npm install
 npm run backend
 ```
