@@ -37,7 +37,7 @@ const Profile = () => {
           email,
           password,
         }).unwrap();
-        dispatch();
+        dispatch(setCredentials(res));
         toast.success("Profile updated successfully");
       } catch (error) {
         toast.error(error?.data?.message || error.message);
@@ -71,7 +71,7 @@ const Profile = () => {
                 placeholder="Enter new email"
                 className="form-input p-4 rounded-sm w-full"
                 value={email}
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
@@ -83,7 +83,7 @@ const Profile = () => {
                 placeholder="Enter new password"
                 className="form-input p-4 rounded-sm w-full"
                 value={password}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
@@ -111,6 +111,7 @@ const Profile = () => {
               />
             </div>
 
+            {/* Buttons */}
             <div className="flex justify-between">
               <button
                 type="submit"
