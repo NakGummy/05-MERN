@@ -69,9 +69,9 @@ const Navigation = () => {
           {""}
         </Link>
 
-        {/* Shop */}
+        {/* Tools */}
         <Link
-          to="/shop"
+          to="/tools"
           className="flex items-center transition-transform transform hover:translate-x-2"
         >
           <TbBackhoe className="mr-2 mt-[3rem]" size={26} />
@@ -79,9 +79,9 @@ const Navigation = () => {
           {""}
         </Link>
 
-        {/* Cart */}
+        {/* Queue */}
         <Link
-          to="/cart"
+          to="/queue"
           className="flex items-center transition-transform transform hover:translate-x-2"
         >
           <PiToolbox className="mr-2 mt-[3rem]" size={26} />
