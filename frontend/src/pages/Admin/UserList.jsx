@@ -22,6 +22,14 @@ const UserList = () => {
     refetch();
   }, [refetch]);
 
+  // Temp
+  useEffect(() => {
+    if (error) {
+      console.log("Error object:", error);
+    }
+  });
+  // Temp
+
   return (
     <div className="p-4">
       <h1 className="text-2xl font-semibold mb-4">Users</h1>
@@ -29,7 +37,7 @@ const UserList = () => {
         <Loader />
       ) : error ? (
         <Message variant="danger">
-          {error?.data.message || error.message}
+          {error?.data.message || error.message || "Unexpected Error"};
         </Message>
       ) : (
         <div className="flex flex-col md:flex-row">
