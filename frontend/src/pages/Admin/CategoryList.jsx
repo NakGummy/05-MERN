@@ -7,6 +7,7 @@ import {
   useFetchCategoriesQuery,
 } from "../../redux/api/categoryApiSlice";
 import CategoryForm from "../../components/CategoryForm";
+import Modal from "../../components/Modal";
 
 const CategoryList = () => {
   const { data: categories } = useFetchCategoriesQuery();
