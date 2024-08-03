@@ -58,7 +58,7 @@ const Navigation = () => {
       } xl:flex lg:flex md:hidden sm:hidden flex-col justify-between p-4 text-white bg-black w-[4%] hover:w-[15%] h-[100vh] fixed`}
       id="navigation-container"
     >
-      <div>
+      <div className="flex flex-col justify-center space-y-4">
         {/* Home */}
         <Link
           to="/"
@@ -206,31 +206,34 @@ const Navigation = () => {
             </li>
           </ul>
         )}
+
+        {/* Public Menu */}
+        {!userInfo && (
+          <ul>
+            {/* Login */}
+            <li>
+              <Link
+                to="/login"
+                className="flex items-center transition-transform transform hover:translate-x-2"
+              >
+                <AiOutlineLogin className="mr-2 mt-[3rem]" size={26} />
+                <span className="hidden nav-item-name mt-[3rem]">Login</span>
+              </Link>
+            </li>
+
+            {/* Register */}
+            <li>
+              <Link
+                to="/register"
+                className="flex items-center transition-transform transform hover:translate-x-2"
+              >
+                <AiOutlineUserAdd className="mr-2 mt-[3rem]" size={26} />
+                <span className="hidden nav-item-name mt-[3rem]">Register</span>
+              </Link>
+            </li>
+          </ul>
+        )}
       </div>
-
-      <ul>
-        {/* Login */}
-        <li>
-          <Link
-            to="/login"
-            className="flex items-center transition-transform transform hover:translate-x-2"
-          >
-            <AiOutlineLogin className="mr-2 mt-[3rem]" size={26} />
-            <span className="hidden nav-item-name mt-[3rem]">Login</span>
-          </Link>
-        </li>
-
-        {/* Register */}
-        <li>
-          <Link
-            to="/register"
-            className="flex items-center transition-transform transform hover:translate-x-2"
-          >
-            <AiOutlineUserAdd className="mr-2 mt-[3rem]" size={26} />
-            <span className="hidden nav-item-name mt-[3rem]">Register</span>
-          </Link>
-        </li>
-      </ul>
     </div>
   );
 };

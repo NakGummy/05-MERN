@@ -71,10 +71,13 @@ const loginUser = asyncHandler(async (req, res) => {
         email: existingUser.email,
         isAdmin: existingUser.isAdmin,
       });
+    } else {
+      res.status(404);
+      throw new Error("Email or Password is incorrect");
     }
   } else {
     res.status(404);
-    throw new Error("User not found.");
+    throw new Error("Email or Password is incorrect");
   }
   res.end();
 });
