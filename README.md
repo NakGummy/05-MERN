@@ -3,7 +3,53 @@
 MongoDB, Express, React, Nodejs の頭文字をとった MERN プロジェクト  
 複数の技術スタックの組み合わせでモックを作成中
 
-現在はユーザーアカウントまわりの操作。
+## To Do List
+
+### Backend
+
+- [x] ログイン
+- [x] ログアウト
+
+- [x] ユーザー管理
+
+  - [x] 作成
+  - [x] 削除
+  - [x] 編集
+  - [x] 検索
+  - [x] 一覧
+
+- [x] カテゴリ管理
+
+  - [x] 作成
+  - [x] 削除
+  - [x] 編集
+  - [x] 検索
+  - [x] 一覧
+
+### Frontend
+
+- [x] ホーム画面
+- [x] ナビゲーション
+- [x] ユーザー編集画面
+- [x] ログイン画面
+- [x] 登録画面
+- [x] ログアウト
+
+- [x] ユーザー管理画面
+
+  - [x] 作成
+  - [x] 削除
+  - [x] 編集
+  - [ ] 検索
+  - [x] 一覧
+
+- [ ] カテゴリ管理
+
+  - [ ] 作成
+  - [ ] 削除
+  - [ ] 編集
+  - [ ] 検索
+  - [ ] 一覧
 
 ## 動かすのに必要なもの
 
@@ -18,7 +64,23 @@ MongoDB, Express, React, Nodejs の頭文字をとった MERN プロジェクト
 
 ## 実装済み API
 
-HTTP リクエストの構造は以下(backend/models/userModels.js 参照)
+HTTP リクエストの構造は以下(backend/models/ 参照)
+
+### Category
+
+```json
+{
+  name: {
+    type: String,
+    trim: true,
+    required: true,
+    maxLength: 32,
+    unique: true,
+  },
+}
+```
+
+### User
 
 ```json
 {
