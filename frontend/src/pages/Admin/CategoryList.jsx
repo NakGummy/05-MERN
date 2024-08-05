@@ -14,7 +14,7 @@ const CategoryList = () => {
 
   const [name, setName] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const [updateName, setUpdateName] = useState("");
+  const [updatingName, setUpdatingName] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
 
   const [createCategory] = useCreateCategoryMutation();
@@ -43,6 +43,50 @@ const CategoryList = () => {
     }
   };
 
+  const handleUpdateCategory = async (e) => {
+    e.preventDefault();
+
+    if (!updatingName) {
+      toast.error("Category name is required");
+      return;
+    }
+
+    try {
+      const result = await updateCategory({
+        categoryId: selectedCategory._id,
+        updatedCategory: { name: updatingName },
+      }).unwrap();
+
+      if (result.error) {
+        toast.error(result.error);
+      } else {
+        toast.success(`${result.name} is updated`);
+        setSelectedCategory(null);
+        setUpdatingName("");
+        setModalVisible(false);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleDeleteCategory = async () => {
+    try {
+      const result = await deleteCategory(selectedCategory._id).unwrap();
+
+      if (result.error) {
+        toast.error(result.error);
+      } else {
+        toast.success(`${result.name} is successfully deleted`);
+        setSelectedCategory(null);
+        setModalVisible(false);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Category deletion failed. Try again");
+    }
+  };
+
   return (
     <div className="ml-[10rem] flex flex-col md:flex-row">
       {/* Admin Menu */}
@@ -62,11 +106,11 @@ const CategoryList = () => {
             <div key={category._id}>
               <button
                 className="bg-white border border-teal-500 text-teal-500 py-2 px-4 rounded-lg m-3 hover:bg-teal-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50"
-                onclick={() => {
+                onClick={() => {
                   {
                     setModalVisible(true);
                     setSelectedCategory(category);
-                    setUpdateName(category.name);
+                    setUpdatingName(category.name);
                   }
                 }}
               >
@@ -75,6 +119,16 @@ const CategoryList = () => {
             </div>
           ))}
         </div>
+
+        <Modal isOpen={modalVisible} onClose={() => setModalVisible(false)}>
+          <CategoryForm
+            value={updatingName}
+            setValue={(value) => setUpdatingName(value)}
+            handleSubmit={handleUpdateCategory}
+            buttonText="Update"
+            handleDelete={handleDeleteCategory}
+          />
+        </Modal>
       </div>
     </div>
   );
