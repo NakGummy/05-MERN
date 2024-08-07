@@ -45,11 +45,11 @@ MongoDB, Express, React, Nodejs の頭文字をとった MERN プロジェクト
 
 - [ ] カテゴリ管理
 
-  - [ ] 作成
-  - [ ] 削除
-  - [ ] 編集
+  - [x] 作成
+  - [x] 削除
+  - [x] 編集
   - [ ] 検索
-  - [ ] 一覧
+  - [x] 一覧
 
 ## 動かすのに必要なもの
 
@@ -117,9 +117,12 @@ HTTP リクエストの構造は以下(backend/models/ 参照)
   
 APIの詳細は  
 ・backend/routes/userRoute.js  
+・backend/routes/categoryRoute.js  
 ・backend/controllers/userController.js  
+・backend/controllers/categoryController.js  
 参照  
   
+## ユーザー操作API
 ### /api/users/  
 post(username, password, email(, isAdmin)) :　ユーザードキュメント作成  
 get() : 全ユーザードキュメント表示、Admin 専用
@@ -141,6 +144,28 @@ put((username), (password), (email)) : username, password, email 変更
 
 get() : 指定 ID のユーザードキュメント表示  
 delete() : 指定 ID のユーザードキュメント削除
+
+## カテゴリ操作 API
+
+### /api/category/
+
+post(categoryname) : カテゴリドキュメント作成
+
+### /api/category/categories
+
+get() : 全カテゴリドキュメント表示
+
+--------など
+
+```json
+router.route("/").post(authenticate, authorizeAdmin, createCategory);
+router.route("/:categoryId").put(authenticate, authorizeAdmin, updateCategory);
+router
+  .route("/:categoryId")
+  .delete(authenticate, authorizeAdmin, removeCategory);
+router.route("/categories").get(listCategory);
+router.route("/:id").get(readCategory);
+```
 
 ## コマンド
 
