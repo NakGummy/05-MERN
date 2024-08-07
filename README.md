@@ -125,7 +125,7 @@ APIの詳細は
 ## ユーザー操作API
 ### /api/users/  
 post(username, password, email(, isAdmin)) :　ユーザードキュメント作成  
-get() : 全ユーザードキュメント表示、Admin 専用
+get() : 全ユーザードキュメント取得、管理者専用
 
 ### /api/users/auth
 
@@ -133,39 +133,63 @@ post(username, password) : ログイン(トークン作成)
 
 ### /api/users/logout
 
-post() : ログアウト(トークン削除)
+post() : ログアウト(トークン削除)、ユーザー用
 
 ### /api/users/profile
 
-get() : ユーザードキュメント表示  
-put((username), (password), (email)) : username, password, email 変更
+get() : ユーザードキュメント取得、ユーザー用  
+put((username), (password), (email)) : username, password, email 変更、ユーザー用
 
 ### /api/users/{id}
 
-get() : 指定 ID のユーザードキュメント表示  
-delete() : 指定 ID のユーザードキュメント削除
+get() : 指定 ID のユーザードキュメント取得、管理者用　　
+put() : 指定 ID のユーザードキュメント変更、管理者用  
+delete() : 指定 ID のユーザードキュメント削除、管理者用
 
 ## カテゴリ操作 API
 
 ### /api/category/
 
-post(categoryname) : カテゴリドキュメント作成
+post(categoryname) : カテゴリドキュメント作成、管理者用
 
 ### /api/category/categories
 
-get() : 全カテゴリドキュメント表示
+get() : 全カテゴリドキュメント取得
 
---------など
+### /api/category/{categoryId}
 
-```json
-router.route("/").post(authenticate, authorizeAdmin, createCategory);
-router.route("/:categoryId").put(authenticate, authorizeAdmin, updateCategory);
-router
-  .route("/:categoryId")
-  .delete(authenticate, authorizeAdmin, removeCategory);
-router.route("/categories").get(listCategory);
-router.route("/:id").get(readCategory);
-```
+get() : 指定 ID カテゴリの取得  
+put(name) : 指定 ID のカテゴリの name 変更、管理者用  
+delete() : 指定 ID のカテゴリ削除、管理者用
+
+## アイテム操作 API
+
+### /api/products
+
+post(name, description, price, category. quantity, brand, image) : アイテムドキュメント作成、管理者用  
+get() : アイテムコレクション情報取得
+
+### /api/products/top
+
+get() : 高レートアイテムドキュメント 4 件取得
+
+### /api/products/new
+
+get() : 新規アイテムドキュメント 5 件取得
+
+### /api/products/allproducts
+
+get() : 全アイテムドキュメント取得
+
+### /api/products/{productId}
+
+get() : 指定 ID のアイテムドキュメント取得  
+put() : 指定 ID のアイテムドキュメント変更、管理者用  
+delete() : 指定 ID のアイテムドキュメント削除、管理者用
+
+### /api/products/{productId}/reviews
+
+post(rating, comment) : 指定 ID のアイテムドキュメントにレビュー追加
 
 ## コマンド
 

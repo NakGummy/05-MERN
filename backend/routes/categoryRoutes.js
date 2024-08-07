@@ -14,9 +14,9 @@ import {
 // Barrier to prevent unauthorized access
 // Checkout the method ,APIs and endpoints
 router.route("/").post(authenticate, authorizeAdmin, createCategory);
-router.route("/:categoryId").put(authenticate, authorizeAdmin, updateCategory);
 router
   .route("/:categoryId")
+  .put(authenticate, authorizeAdmin, updateCategory)
   .delete(authenticate, authorizeAdmin, removeCategory);
 router.route("/categories").get(listCategory);
 router.route("/:id").get(readCategory);
